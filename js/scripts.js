@@ -4,17 +4,17 @@ function AddressBook() {
   this.currentId = 0;
 }
 
-AddressBook.prototype.assignId = function() {
-  this.currentId += 1;
-  return this.currentId;
-};
-
 AddressBook.prototype.addContact = function(contact) {
   contact.id = this.assignId();
   this.contacts[contact.id] = contact;
 };
 
-AddressBook.prototype.findContact = function (id) {
+AddressBook.prototype.assignId = function() {
+  this.currentId += 1;
+  return this.currentId;
+};
+
+AddressBook.prototype.findContact = function(id) {
   if (this.contacts[id] !== undefined) {
     return this.contacts[id];
   }
@@ -40,3 +40,5 @@ function Contact(firstName, lastName, phoneNumber) {
 Contact.prototype.fullName = function() {
   return this.firstName + " " + this.lastName;
 };
+
+awsdui
