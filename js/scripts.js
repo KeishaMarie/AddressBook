@@ -2,7 +2,7 @@
 function AddressBook() {
   this.contacts = {};
   this.currentId = 0;
-}
+};
 
 AddressBook.prototype.addContact = function(contact) {
   contact.id = this.assignId();
@@ -29,16 +29,32 @@ AddressBook.prototype.deleteContact = function(id) {
   return true;
 };
 
-
 //Business logic for Contacts -------
 function Contact(firstName, lastName, phoneNumber) {
   this.firstName = firstName;
   this.lastName = lastName;
   this.phoneNumber = phoneNumber;
-}
+};
 
 Contact.prototype.fullName = function() {
   return this.firstName + " " + this.lastName;
 };
 
-awsdui
+// UI Logic
+
+let addressBook = new AddressBook();
+
+function handleFormSubmission(event) {
+  event.preventDefault90;
+  const inputtedFirstName = document.querySelector("input#new-first-name").value;
+  const inputtedLastName = document.querySelector("input#new-last-name").value;
+  const inputtedPhoneNumber = document.querySelector("input#new-phone-number").value;
+  let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
+    addressBook.addContact(newContact);
+    console.log(addressBook.contacts);
+}
+
+window.addEventListener("load", function() {
+document.querySelector("form#new-contact").addEventListener("submit", handleFormSubmission);
+});
+
